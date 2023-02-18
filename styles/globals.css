@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import './github-markdown.css';
+
+.markdown-body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 672px;
+  margin: 0 auto;
+  padding: 15px;
+  background-color: transparent !important;
+  color: black !important;
+}
+
+@media (max-width: 767px) {
+  .markdown-body {
+    padding: 0px;
+  }
+}
+
+#pub-wrapper > ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+}
+
+#pub-wrapper > ul {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+#pub-wrapper a {
+  color: blue;
+  text-decoration: underline;
+}
