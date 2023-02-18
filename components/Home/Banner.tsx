@@ -45,8 +45,8 @@ export default function Banner() {
                 <div className=" aspect-w-16 aspect-h-9 lg:aspect-1">
                   <Image
                     className="rounded-lg shadow-lg object-cover object-center"
-                    src={config.homePage.banner.imageURL}
-                    alt={config.homePage.banner.imageAlt}
+                    src="/images/profile-picture.jpg"
+                    alt={config.homePage.banner.header2}
                     layout="fill"
                   />
                 </div>
@@ -75,7 +75,7 @@ export default function Banner() {
                 type="button"
                 className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                <a href={config.homePage.resumeURL}>Curriculum Vitae</a>
+                <a href="/pdf/cv.pdf">Curriculum Vitae</a>
               </button>
             </div>
           </div>

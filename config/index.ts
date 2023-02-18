@@ -55,17 +55,8 @@ const config = {
     // description of website. Useful for screen readers
     description: "Son Tran's portfolio",
 
-    // resume url
-    resumeURL: 'pdf/Huan_CV3.pdf',
-
     // home page banner config
     banner: {
-      // url of banner image
-      imageURL: '/images/home/IMG_1495_2.png',
-
-      // description of banner image
-      imageAlt: 'Huan Ngo',
-
       // header1 value
       header1: 'Portfolio',
 

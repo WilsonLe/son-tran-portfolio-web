@@ -53,6 +53,7 @@ yarn install
 
 After you have completed your one-time setup commands, you here is a list of things you can update:
 
+- [Profile pictures]()
 - [Text contents](#how-to-edit-text-contents)
 - [Publications](#how-to-edit-publications)
 - [CV](#how-to-edit-cv)
@@ -75,6 +76,10 @@ git commit -m "your-message"
 git push
 ```
 
+## How To Edit Profile Picture
+
+To edit a new profile picture, you can simply replace the file `profile-picture.jpg` inside the `public/images` directory with your new profile picture. **Note that the file must be named "profile-picture.jpg"**. If you need an image converter, a simple search for "Online image converter" yields this link: [convertio.co/image-converter](https://convertio.co/image-converter).
+
 ## How To Edit Text Contents
 
 To update text content on the webpage, navigate to folder `config`, open `index.ts`. This file contains text value for the entire website, stored in JSON format. The details and descriptions are specified in the file.
@@ -85,7 +90,7 @@ To add a new publication, you can simply update the `publications.md` inside the
 
 ## How To Edit CV
 
-To upload a new CV, you can simply replace the file `cv.pdf` inside the `public/pdf` directory with your new CV. **Note that the file must be named "cv.pdf"**.
+To edit a new CV, you can simply replace the file `cv.pdf` inside the `public/pdf` directory with your new CV. **Note that the file must be named "cv.pdf"**.
 
 # Author
 
