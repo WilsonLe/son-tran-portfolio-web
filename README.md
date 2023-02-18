@@ -70,7 +70,7 @@ After you are happy with your changes, you can upload your code using the follow
 ```bash
 git add config/index.ts public
 
-git commit -m <your-message>
+git commit -m "your-message"
 
 git push
 ```
