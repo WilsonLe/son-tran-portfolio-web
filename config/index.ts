@@ -21,7 +21,7 @@ const config = {
       },
       {
         // button text
-        text: 'Publication',
+        text: 'Publications',
 
         // button link. This should not be changed.
         href: '/publications',
