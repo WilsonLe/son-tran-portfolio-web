@@ -32,12 +32,12 @@ const config = {
   // footer, displayed on bottom
   footer: {
     // title displayed on the left of footer
-    title: 'Get in touch',
+    title: '',
 
     // infomation of the top left grid
     column: {
       // title for top left grid
-      title: 'Son Tran',
+      title: 'Son (Quoc) Tran',
 
       // text1 value
       email: 'tran_s2@denison.edu',
@@ -65,13 +65,14 @@ const config = {
 
       // paragraph1 value
       paragraphs: [
-        'I am a third-year undergraduate student at Denison University.',
+        'I am currently a third-year undergraduate student at Denison University.',
 
-        'At Denison, my focus is on evaluating the robustness and reliability of machine reading comprehension models in the face of adversarial attacks. Besides, I am also researching in the intersectional biases present within Natural Language Understanding models, with the goal of uncovering potential issues and working towards their mitigation.',
+        'I am also an undergraduate research assistant at both Denison University and the UIT NLP Group. Under the guidance of my advisors, Dr. Matt Kretchmar from Denison University and Professor Kiet Van Nguyen from the UIT NLP Group, I am engaged in two distinct areas of research.',
+
+        'At Denison, my focus is on evaluating and improving the robustness and reliability of machine reading comprehension models under adversarial attacks. Besides, I am also researching in the intersectional biases present within Natural Language Understanding models, with the goal of uncovering potential issues and working towards their mitigation.',
 
         'At the UIT NLP Group, my research is centered around enriching the resources of Vietnamese Natural Language Processing, which involves publishing high-quality datasets and training large language models.',
-
-        'I am also proud to serve as an undergraduate research assistant at both Denison University and the UIT NLP Group. Under the guidance of my advisors, Dr. Matt Kretchmar from Denison University and Professor Kiet Van Nguyen from the UIT NLP Group, I am engaged in two distinct areas of research.',
+        
       ],
     },
   },
