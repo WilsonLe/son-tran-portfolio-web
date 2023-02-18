@@ -12,9 +12,10 @@ Update directly on Github is quick and easy, but the downside is that you have t
 
 Here is a list of things you can edit:
 
-- [Text contents](#how-to-edit-text-contents)
-- [Publications](#how-to-edit-publications)
-- [CV](#how-to-edit-cv)
+- [How To Edit Profile Picture](#how-to-edit-profile-picture)
+- [How To Edit Text Contents](#how-to-edit-text-contents)
+- [How To Edit Publications](#how-to-edit-publications)
+- [How To Edit CV](#how-to-edit-cv)
 
 After you have updated your page contents, go ahead and commit those changes. It should take 1-2 minutes for the changes to propagate. Note that you should clear your browser cache to reliably see those changes, or you can wait for browser cache to expire to see those changes for yourself. This has been known to take upto 24 hours in some cases.
 
@@ -53,10 +54,10 @@ yarn install
 
 After you have completed your one-time setup commands, you here is a list of things you can update:
 
-- [Profile pictures]()
-- [Text contents](#how-to-edit-text-contents)
-- [Publications](#how-to-edit-publications)
-- [CV](#how-to-edit-cv)
+- [How To Edit Profile Picture](#how-to-edit-profile-picture)
+- [How To Edit Text Contents](#how-to-edit-text-contents)
+- [How To Edit Publications](#how-to-edit-publications)
+- [How To Edit CV](#how-to-edit-cv)
 
 You can preview your changes locally using this command:
 
@@ -96,3 +97,5 @@ To edit a new CV, you can simply replace the file `cv.pdf` inside the `public/pd
 
 - [Son Tran](https://github.com/https://github.com/sonqt)
 - [Wilson Le](https://wilsonle.me)
+
+[def]: #how-to-edit
