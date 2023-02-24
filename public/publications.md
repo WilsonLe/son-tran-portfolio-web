@@ -2,7 +2,7 @@
 <br />
 <br />
 
-*   *Revealing Weaknesses of Vietnamese Language Models Through Unanswerable Questions in Machine Reading Comprehension*  <br />**Son Quoc Tran**, Phong Nguyen-Thuan Do, Kiet Nguyen, Ngan Luu Thuy Nguyen<br />Student Research Workshop at the 17th Conference of the European Chapter of the Association for Computational Linguistics (** SRW EACL 2023**)
+*   *Revealing Weaknesses of Vietnamese Language Models Through Unanswerable Questions in Machine Reading Comprehension*  <br />**Son Quoc Tran**, Phong Nguyen-Thuan Do, Kiet Nguyen, Ngan Luu Thuy Nguyen<br />Student Research Workshop at the 17th Conference of the European Chapter of the Association for Computational Linguistics (**SRW EACL 2023**)
 <br />
 <br />
 
