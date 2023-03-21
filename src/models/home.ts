@@ -1,6 +1,5 @@
 import { z } from 'zod';
 import { ImageData } from './image';
-import { LinkData } from './link';
 import { NonEmptyString } from './nonEmptyString';
 
 export const HomeData = z
@@ -11,7 +10,8 @@ export const HomeData = z
     primaryHeader: NonEmptyString,
     secondaryHeader: NonEmptyString,
     content: NonEmptyString,
-    button: LinkData,
+    buttonText: NonEmptyString,
+    downloadFile: NonEmptyString,
     profilePicture: ImageData,
   })
   .default({
@@ -38,10 +38,8 @@ export const HomeData = z
 </p>
 <br>
 `,
-    button: {
-      href: '/pdf/cv.pdf',
-      text: 'Curriculum Vitae',
-    },
+    buttonText: 'Curriculum Vitae',
+    downloadFile: '/pdf/cv.pdf',
     profilePicture: {
       src: '/images/profile-picture.jpg',
       alt: 'Son Tran profile picture',
