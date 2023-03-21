@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import config from '../../config';
-export default function Banner() {
+import { HomeData } from '../../models/home';
+
+export default function Banner(props: HomeData) {
   return (
     <div className="bg-white overflow-hidden">
       <div className="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
@@ -42,12 +43,14 @@ export default function Banner() {
             </svg>
             <div className="relative text-base mx-auto max-w-prose lg:max-w-none">
               <figure>
-                <div className=" aspect-w-16 aspect-h-9 lg:aspect-1">
+                <div className="aspect-w-16 aspect-h-9 lg:aspect-1">
                   <Image
-                    className="rounded-lg shadow-lg object-cover object-center"
-                    src="/images/profile-picture.jpg"
-                    alt={config.homePage.banner.header2}
-                    layout="fill"
+                    className="h-full w-full rounded-lg shadow-lg object-cover object-center"
+                    src={props.profilePicture.src}
+                    alt={props.profilePicture.alt}
+                    width={0}
+                    height={0}
+                    sizes={'100vw'}
                   />
                 </div>
               </figure>
@@ -56,26 +59,22 @@ export default function Banner() {
           <div className="mt-8 lg:mt-0">
             <div className="text-base max-w-prose mx-auto lg:max-w-none">
               <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">
-                {config.homePage.banner.header1}
+                {props.primaryHeader}
               </h2>
               <h3 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                {config.homePage.banner.header2}
+                {props.secondaryHeader}
               </h3>
             </div>
-            <div className="mt-5 prose prose-indigo text-gray-500 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1 max-w-prose">
-              {config.homePage.banner.paragraphs.map((p) => (
-                <>
-                  <p>{p}</p>
-                  <br />
-                </>
-              ))}
-            </div>
+            <div
+              className="mt-5 prose prose-indigo text-gray-500 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1 max-w-prose"
+              dangerouslySetInnerHTML={{ __html: props.content }}
+            />
             <div className="mt-5 max-w-2xl mx-auto">
               <button
                 type="button"
                 className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                <a href="/pdf/cv.pdf">Curriculum Vitae</a>
+                <a href={props.button.href}>{props.button.text}</a>
               </button>
             </div>
           </div>

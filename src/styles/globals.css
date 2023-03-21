@@ -19,17 +19,33 @@
   }
 }
 
-#pub-wrapper > ol {
+.pub-wrapper > ol {
   list-style-type: decimal;
   list-style-position: inside;
 }
 
-#pub-wrapper > ul {
+.pub-wrapper > ul {
   list-style-type: disc;
   list-style-position: inside;
 }
 
-#pub-wrapper a {
+.pub-wrapper a {
   color: blue;
   text-decoration: underline;
+}
+
+.footer-column h1,
+h2,
+h3,
+h4 {
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  font-weight: 500;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.footer-column p {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
