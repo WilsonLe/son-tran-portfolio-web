@@ -42,7 +42,7 @@ const Publications: NextPage<PublicationProps> = (props) => {
                   {props.main.title}
                 </h1>
               </div>
-              <div className="my-4">
+              <div className="pub-wrapper my-4">
                 {props.main.publications.map((publication, i) => (
                   <div
                     key={i}
