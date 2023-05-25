@@ -1,111 +1,58 @@
-import { Config } from './config';
+import { Payload } from 'payload';
 import { FooterData } from './models/footer';
 import { HeaderData } from './models/header';
 import { HomeData } from './models/home';
 import { PublicationMainData } from './models/publication-main';
+import { Footer, Header, Home, Publication } from './payload-types';
 
 export class Utils {
-  public static async fetchHeader(): Promise<HeaderData> {
-    let rawHeader: unknown = undefined;
+  public static async fetchHeader(payload: Payload): Promise<HeaderData> {
+    let rawHeader: Header | undefined;
+
     try {
-      const res = await fetch(`${Config.cmsHost}/api/header?populate=deep`, {
-        headers: { Authorization: `Bearer ${Config.cmsToken}` },
-      });
-      const body = await res.json();
-      rawHeader = {
-        logo: {
-          src: body.data.attributes.logo.data.attributes.url,
-          alt: body.data.attributes.logo.data.attributes.alternativeText,
-        },
-        navigations: body.data.attributes.navigations,
-      };
+      rawHeader = await payload.findGlobal({ slug: 'header' });
     } catch (error) {
+      rawHeader = undefined;
       console.error(error);
     }
     const header = HeaderData.parse(rawHeader);
     return header;
   }
 
-  public static async fetchFooter(): Promise<FooterData> {
-    let rawFooter: unknown = undefined;
+  public static async fetchFooter(payload: Payload): Promise<FooterData> {
+    let rawFooter: Footer | undefined;
     try {
-      const res = await fetch(`${Config.cmsHost}/api/footer?populate=deep`, {
-        headers: { Authorization: `Bearer ${Config.cmsToken}` },
-      });
-
-      const body = await res.json();
-
-      rawFooter = { columns: body.data.attributes.columns };
+      rawFooter = await payload.findGlobal({ slug: 'footer' });
     } catch (error) {
-      console.error(error);
+      rawFooter = undefined;
     }
     const footer = FooterData.parse(rawFooter);
     return footer;
   }
 
-  public static async fetchHome(): Promise<HomeData> {
-    let rawHome: unknown = undefined;
+  public static async fetchHome(payload: Payload): Promise<HomeData> {
+    let rawHome: Home | undefined;
     try {
-      const res = await fetch(`${Config.cmsHost}/api/home?populate=deep`, {
-        headers: { Authorization: `Bearer ${Config.cmsToken}` },
-      });
-
-      const body = await res.json();
-
-      rawHome = {
-        title: body.data.attributes.title,
-        description: body.data.attributes.description,
-        favicon: {
-          src: body.data.attributes.favicon.data.attributes.url,
-          alt: body.data.attributes.favicon.data.attributes.alternativeText,
-        },
-        primaryHeader: body.data.attributes.primaryHeader,
-        secondaryHeader: body.data.attributes.secondaryHeader,
-        content: body.data.attributes.content,
-        buttonText: body.data.attributes.buttonText,
-        downloadFile: body.data.attributes.downloadFile.data.attributes.url,
-        profilePicture: {
-          src: body.data.attributes.profilePicture.data.attributes.url,
-          alt: body.data.attributes.profilePicture.data.attributes
-            .alternativeText,
-        },
-      };
+      rawHome = await payload.findGlobal({ slug: 'home' });
+      console.log(rawHome);
     } catch (error) {
-      console.error(error);
+      rawHome = undefined;
     }
-
     const homeData = HomeData.parse(rawHome);
-
     return homeData;
   }
 
-  public static fetchPublication = async (): Promise<PublicationMainData> => {
-    let rawPublicationMainData: unknown = undefined;
-
+  public static fetchPublication = async (
+    payload: Payload
+  ): Promise<PublicationMainData> => {
+    let rawPublication: Publication | undefined;
     try {
-      const res = await fetch(
-        `${Config.cmsHost}/api/publication-main?populate=deep`,
-        {
-          headers: { Authorization: `Bearer ${Config.cmsToken}` },
-        }
-      );
-
-      const body = await res.json();
-
-      rawPublicationMainData = {
-        title: body.data.attributes.title,
-        publications: body.data.attributes.publications?.data?.map(
-          (publication: any) => ({
-            content: publication.attributes.content,
-          })
-        ),
-      };
+      rawPublication = await payload.findGlobal({ slug: 'publications' });
+      console.log(rawPublication);
     } catch (error) {
-      console.error(error);
+      rawPublication = undefined;
     }
-
-    const articleMainData = PublicationMainData.parse(rawPublicationMainData);
-
+    const articleMainData = PublicationMainData.parse(rawPublication);
     return PublicationMainData.parse(articleMainData);
   };
 }

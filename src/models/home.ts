@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { serializeHTML } from '../serializeHtml';
 import { ImageData } from './image';
 import { NonEmptyString } from './nonEmptyString';
 
@@ -9,7 +10,7 @@ export const HomeData = z
     favicon: ImageData,
     primaryHeader: NonEmptyString,
     secondaryHeader: NonEmptyString,
-    content: NonEmptyString,
+    content: z.any().transform(serializeHTML),
     buttonText: NonEmptyString,
     downloadFile: NonEmptyString,
     profilePicture: ImageData,

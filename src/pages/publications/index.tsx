@@ -4,6 +4,7 @@ import Nav from '../../components/Nav';
 import { FooterData } from '../../models/footer';
 import { HeaderData } from '../../models/header';
 import { PublicationMainData } from '../../models/publication-main';
+import getPayloadClient from '../../payload/payloadClient';
 import { Utils } from '../../utils';
 
 interface PublicationProps {
@@ -13,10 +14,11 @@ interface PublicationProps {
 }
 
 const getStaticProps: GetStaticProps = async () => {
+  const payload = await getPayloadClient();
   const [header, main, footer] = await Promise.all([
-    Utils.fetchHeader(),
-    Utils.fetchPublication(),
-    Utils.fetchFooter(),
+    Utils.fetchHeader(payload),
+    Utils.fetchPublication(payload),
+    Utils.fetchFooter(payload),
   ]);
   return {
     props: {

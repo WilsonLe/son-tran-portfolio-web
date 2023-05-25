@@ -1,6 +1,8 @@
 import { z } from 'zod';
-import { NonEmptyString } from './nonEmptyString';
+import { serializeHTML } from '../serializeHtml';
 
-export const PublicationData = z.object({ content: NonEmptyString });
+export const PublicationData = z.object({
+  content: z.any().transform(serializeHTML).default(''),
+});
 
 export type PublicationData = z.infer<typeof PublicationData>;

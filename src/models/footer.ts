@@ -1,6 +1,9 @@
 import { z } from 'zod';
+import { serializeHTML } from '../serializeHtml';
 
-const FooterColumn = z.object({ content: z.string() });
+const FooterColumn = z.object({
+  content: z.any().transform(serializeHTML),
+});
 export const FooterData = z
   .object({
     columns: z.array(FooterColumn).default([]),

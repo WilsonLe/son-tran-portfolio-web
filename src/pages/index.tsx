@@ -6,6 +6,7 @@ import Nav from '../components/Nav';
 import { FooterData } from '../models/footer';
 import { HeaderData } from '../models/header';
 import { HomeData } from '../models/home';
+import getPayloadClient from '../payload/payloadClient';
 import { Utils } from '../utils';
 
 interface HomeProps {
@@ -15,10 +16,11 @@ interface HomeProps {
 }
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const payload = await getPayloadClient();
   const [header, main, footer] = await Promise.all([
-    Utils.fetchHeader(),
-    Utils.fetchHome(),
-    Utils.fetchFooter(),
+    Utils.fetchHeader(payload),
+    Utils.fetchHome(payload),
+    Utils.fetchFooter(payload),
   ]);
   return {
     props: {
