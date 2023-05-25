@@ -1,59 +1,23 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiHandler } from 'next';
 import { z } from 'zod';
-import { Config } from '../../config';
-import { CMSEntity } from '../../models/cmsEntity';
-import { CMSWebhookEvent } from '../../models/cmsWebhookEvent';
-import { Routes } from '../../models/routes';
-
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  // validate request method
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
+const handler: NextApiHandler = async (req, res) => {
+  const body = z
+    .object({ token: z.string(), paths: z.array(z.string()) })
+    .parse(req.body);
+  const revalidationToken = z.string().parse(process.env.REVALIDATION_TOKEN);
+  if (body.token !== revalidationToken) {
+    return res.status(401).json({ message: 'Invalid token' });
   }
-
-  // authorize request
-  if (req.headers.authorization !== `Bearer ${Config.cmsWebhookToken}`) {
-    console.error(`unauthorized: ${req.headers.authorization}`);
-    return res.status(401).json({ message: 'Unauthorized' });
-  }
-
-  // parse request body
-  let body: {
-    event: CMSWebhookEvent;
-    model: CMSEntity;
-  };
   try {
-    body = z
-      .object({
-        event: z.nativeEnum(CMSWebhookEvent),
-        model: z.nativeEnum(CMSEntity),
-      })
-      .parse(req.body);
-  } catch (error) {
-    console.error(error);
-    return res.status(400).json({ message: 'Invalid input' });
-  }
-
-  const entityDependencies = {
-    [CMSEntity.Publication]: [Routes.Publications],
-    [CMSEntity.PublicationMain]: [Routes.Publications],
-    [CMSEntity.Footer]: [Routes.Home, Routes.Publications],
-    [CMSEntity.Header]: [Routes.Home, Routes.Publications],
-    [CMSEntity.Home]: [Routes.Home],
-  };
-
-  try {
-    await Promise.all(
-      entityDependencies[body.model].map((route) => res.revalidate(route))
-    );
-  } catch (error) {
+    // this should be the actual path not a rewritten path
+    // e.g. for "/blog/[slug]" this should be "/blog/post-1"
+    await Promise.all(body.paths.map((path) => res.revalidate(path)));
+    return res.json({ revalidated: true });
+  } catch (err) {
     // If there was an error, Next.js will continue
     // to show the last successfully generated page
-    console.error(error);
-    return res.status(500).send({ message: 'Internal server error' });
+    return res.status(500).send('Error revalidating');
   }
-  return res.status(200).json({ message: 'ok' });
-}
+};
+
+export default handler;

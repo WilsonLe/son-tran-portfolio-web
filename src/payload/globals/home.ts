@@ -1,4 +1,5 @@
 import { GlobalConfig } from 'payload/dist/globals/config/types';
+import { Axios } from '../../services/axios';
 
 export const home: GlobalConfig = {
   slug: 'home',
@@ -51,4 +52,15 @@ export const home: GlobalConfig = {
       required: true,
     },
   ],
+  hooks: {
+    afterChange: [
+      async (args) => {
+        await Axios.post('/api/revalidate', {
+          token: process.env.REVALIDATION_TOKEN,
+          paths: ['/'],
+        });
+        return args.doc;
+      },
+    ],
+  },
 };
