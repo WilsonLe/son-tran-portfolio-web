@@ -9,7 +9,9 @@ export default function Footer(props: FooterData) {
             <div
               key={i}
               className="footer-column"
-              dangerouslySetInnerHTML={{ __html: column.content }}
+              dangerouslySetInnerHTML={{
+                __html: column.content ? column.content : '',
+              }}
             />
           ))}
         </div>

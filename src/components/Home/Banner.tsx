@@ -46,7 +46,9 @@ export default function Banner(props: HomeData) {
                 <div className="aspect-w-16 aspect-h-9 lg:aspect-1">
                   <Image
                     className="h-full w-full rounded-lg shadow-lg object-cover object-center"
-                    src={props.profilePicture.src}
+                    src={
+                      props.profilePicture.src ? props.profilePicture.src : ''
+                    }
                     alt={props.profilePicture.alt}
                     width={0}
                     height={0}
@@ -67,7 +69,9 @@ export default function Banner(props: HomeData) {
             </div>
             <div
               className="mt-5 prose prose-indigo text-gray-500 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1 max-w-prose"
-              dangerouslySetInnerHTML={{ __html: props.content }}
+              dangerouslySetInnerHTML={{
+                __html: props.content ? props.content : '',
+              }}
             />
             <div className="mt-5 max-w-2xl mx-auto">
               <button

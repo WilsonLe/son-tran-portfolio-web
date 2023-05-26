@@ -27,7 +27,7 @@ export default function Nav(props: HeaderData) {
                   <div className="flex-shrink-0 flex items-center">
                     <Image
                       className="object-contain"
-                      src={props.logo.src}
+                      src={props.logo.src ? props.logo.src : ''}
                       width={40}
                       height={40}
                       alt={props.logo.alt}
