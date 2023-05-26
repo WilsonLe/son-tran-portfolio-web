@@ -10,6 +10,7 @@ export const HeaderData = z
   .default({
     logo: {
       src: '/denison.jpg',
+      url: '/denison.jpg',
       alt: 'Denison University logo',
     },
     navigations: [

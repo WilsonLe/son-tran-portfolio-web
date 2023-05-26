@@ -3,6 +3,7 @@ import { Text } from 'slate';
 
 export const serializeHTML = (children: any): string | undefined => {
   if (typeof children === 'string') return children;
+  if (!children) return '';
   return children
     .map((node: any, i: number) => {
       if (Text.isText(node) as any) {

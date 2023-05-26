@@ -18,7 +18,7 @@ export const HomeData = z
   .default({
     title: 'Son Tran Portfolio',
     description: "Son Tran's portfolio",
-    favicon: { src: '/favicon.ico', alt: null },
+    favicon: { src: '/favicon.ico', url: '/favicon.ico', alt: null },
     primaryHeader: 'PORTFOLIO',
     secondaryHeader: 'Son Tran',
     content: `
@@ -43,6 +43,7 @@ export const HomeData = z
     downloadFile: '/pdf/cv.pdf',
     profilePicture: {
       src: '/images/profile-picture.jpg',
+      url: '/images/profile-picture.jpg',
       alt: 'Son Tran profile picture',
     },
   });

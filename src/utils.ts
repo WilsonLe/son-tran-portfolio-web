@@ -11,6 +11,9 @@ export class Utils {
 
     try {
       rawHeader = await payload.findGlobal({ slug: 'header' });
+      if (JSON.stringify(rawHeader) === JSON.stringify({})) {
+        rawHeader = undefined;
+      }
     } catch (error) {
       rawHeader = undefined;
       console.error(error);
@@ -23,6 +26,9 @@ export class Utils {
     let rawFooter: Footer | undefined;
     try {
       rawFooter = await payload.findGlobal({ slug: 'footer' });
+      if (JSON.stringify(rawFooter) === JSON.stringify({})) {
+        rawFooter = undefined;
+      }
     } catch (error) {
       rawFooter = undefined;
     }
@@ -34,7 +40,9 @@ export class Utils {
     let rawHome: Home | undefined;
     try {
       rawHome = await payload.findGlobal({ slug: 'home' });
-      console.log(rawHome);
+      if (JSON.stringify(rawHome) === JSON.stringify({})) {
+        rawHome = undefined;
+      }
     } catch (error) {
       rawHome = undefined;
     }
@@ -48,7 +56,9 @@ export class Utils {
     let rawPublication: Publication | undefined;
     try {
       rawPublication = await payload.findGlobal({ slug: 'publications' });
-      console.log(rawPublication);
+      if (JSON.stringify(rawPublication) === JSON.stringify({})) {
+        rawPublication = undefined;
+      }
     } catch (error) {
       rawPublication = undefined;
     }
